@@ -18,6 +18,13 @@ def markdown2html(markdown_file, output_file):
         print(f"Missing {markdown_file}", file=sys.stderr)
         sys.exit(1)
 
+    if len(sys.argv) < 2:
+        print(
+            'Usage: ./markdown2html.py README.md README.html',
+            file=sys.stderr
+            )
+        sys.exit(1)
+
     with open(markdown_file, 'r') as f:
         tempMd = f.read()
 
