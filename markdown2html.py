@@ -12,12 +12,26 @@ def markdown2html(markdown, output):
         markdown: Markdown file
         output: output file name
     """
-    if len(sys.argv) < 3:
-        print('Usage: ./markdown2html.py README.md README.html', file=sys.stderr)
+    if len(sys.argv) < 2:
+        print(
+            'Usage: ./markdown2html.py README.md README.html',
+            file=sys.stderr
+            )
         sys.exit(1)
-        
+
     if not os.path.isfile(markdown):
         print(f"Missing {markdown}", file=sys.stderr)
         sys.exit(1)
-    
+
     sys.exit(0)
+
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print(
+            'Usage: ./markdown2html.py README.md README.html',
+            file=sys.stderr
+            )
+        sys.exit(1)
+
+    markdown2html(sys.argv[1], sys.argv[2])
