@@ -9,9 +9,9 @@ def markdown2html(markdown_file, output_file):
     """
     markdown2html: Markdown to HTML
 
-    args:
-        markdown_file: Markdown file
-        output_file: output file name
+    Args:
+        markdown_file(str): Markdown file
+        output_file(str): output file name
     """
 
     if not os.path.isfile(markdown_file):
@@ -37,5 +37,5 @@ if __name__ == '__main__':
             )
         sys.exit(1)
 
-    if isinstance(sys.argv[1], str) and isinstance(sys.argv[2], str):
-        markdown2html(sys.argv[1], sys.argv[2])
+    # if isinstance(sys.argv[1], str) and isinstance(sys.argv[2], str):
+    markdown2html(sys.argv[1], sys.argv[2])
