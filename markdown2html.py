@@ -8,7 +8,7 @@ def markdown2html(markdown, output):
     """
     markdown2html: Markdown to HTML
 
-    args:
+    Args:
         markdown: Markdown file
         output: output file name
     """
@@ -21,17 +21,28 @@ def markdown2html(markdown, output):
         lines = f.readlines()
 
     with open(output, 'w') as f:
+        list_item = False
         for line in lines:
             line = line.strip()
-        
+
             if line.startswith('#'):
                 heading_count = line.count('#')
                 heading_text = line.strip('#').strip()
 
                 html = f'<h{heading_count}>{heading_text}</h{heading_count}>'
                 f.write(html)
+            elif line.startswith('-'):
+                if not list_item:
+                    f.write('<ul>\n')
+                    list_item = True
+                f.write(f"  <li>{line.strip('-').strip()}</li>\n")
             else:
+                if list_item:
+                    f.write('</ul>\n')
+                    list_item = False
                 f.write(line + '\n')
+        if list_item:
+            f.write('</ul>\n')
     sys.exit(0)
 
 
