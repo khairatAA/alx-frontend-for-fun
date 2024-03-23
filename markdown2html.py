@@ -22,6 +22,8 @@ def markdown2html(markdown, output):
 
     with open(output, 'w') as f:
         list_item = False
+        ordered_list = False
+
         for line in lines:
             line = line.strip()
 
@@ -36,13 +38,23 @@ def markdown2html(markdown, output):
                     f.write('<ul>\n')
                     list_item = True
                 f.write(f"  <li>{line.strip('-').strip()}</li>\n")
+            elif line.startswith('*'):
+                if not ordered_list:
+                    f.write('<ol>\n')
+                    ordered_list = True
+                f.write(f"  <li>{line.strip('*').strip()}</li>\n")
             else:
                 if list_item:
                     f.write('</ul>\n')
                     list_item = False
+                elif ordered_list:
+                    f.write('</ol>\n')
+                    ordered_list = False
                 f.write(line + '\n')
         if list_item:
             f.write('</ul>\n')
+        elif ordered_list:
+            f.write('</ol>\n')
     sys.exit(0)
 
 
