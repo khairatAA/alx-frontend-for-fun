@@ -17,11 +17,26 @@ def markdown2html(markdown, output):
         print(f"Missing {markdown}", file=sys.stderr)
         sys.exit(1)
 
+    with open(markdown, 'r') as f:
+        lines = f.readlines()
+
+    with open(output, 'w') as f:
+        for line in lines:
+            line = line.strip()
+        
+            if line.startswith('#'):
+                heading_count = line.count('#')
+                heading_text = line.strip('#').strip()
+
+                html = f'<h{heading_count}>{heading_text}</h{heading_count}>'
+                f.write(html)
+            else:
+                f.write(line + '\n')
     sys.exit(0)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
+    if len(sys.argv) != 3:
         print(
             'Usage: ./markdown2html.py README.md README.html',
             file=sys.stderr
