@@ -8,4 +8,8 @@ Hello
 I'm **a** text
 with **2 lines**
 
-**Or in bold**
+((I will live in Caracas))
+
+But it's [[private]]
+
+So cool!

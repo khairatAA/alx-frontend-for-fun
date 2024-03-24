@@ -3,6 +3,7 @@
 import sys
 import os
 import re
+import hashlib
 
 
 def markdown2html(markdown, output):
@@ -31,6 +32,17 @@ def markdown2html(markdown, output):
 
             line = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', line)
             line = re.sub(r'__(.*?)__', r'<em>\1</em>', line)
+
+            if '[[' in line and ']]' in line:
+                text = line[line.index('[[') + 2:line.index(']]')]
+                encoded_text = hashlib.md5(text.encode())
+                line = line.replace(f'[[{text}]]', f'{encoded_text.hexdigest()}')
+
+            if '((' in line and '))' in line:
+                text = line[line.index('((') + 2:line.index('))')]
+                new_text = text.replace('c', '')
+                new_text = new_text.replace('C', '')
+                line = line.replace(f'(({text}))', f'{new_text}')
 
             if line.startswith('#'):
                 heading_count = line.count('#')
