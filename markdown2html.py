@@ -56,9 +56,9 @@ def markdown2html(markdown, output):
                         f.write('<br/>\n')
                     f.write(f'{line}\n')
                 else:
-                        if contd_paragraph:
-                            f.write('</p>\n')
-                            contd_paragraph = False
+                    if contd_paragraph:
+                        f.write('</p>\n')
+                        contd_paragraph = False
 
                 if list_item:
                     f.write('</ul>\n')
