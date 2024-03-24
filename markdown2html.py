@@ -2,6 +2,7 @@
 """markdown2html"""
 import sys
 import os
+import re
 
 
 def markdown2html(markdown, output):
@@ -27,6 +28,9 @@ def markdown2html(markdown, output):
 
         for line in lines:
             line = line.strip()
+
+            line = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', line)
+            line = re.sub(r'__(.*?)__', r'<em>\1</em>', line)
 
             if line.startswith('#'):
                 heading_count = line.count('#')
