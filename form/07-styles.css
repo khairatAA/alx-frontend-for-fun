@@ -156,12 +156,12 @@
 
   .button-primary{
     color: var(--color-white);
-    background-color: var(--color-primary);
+    background: var(--color-primary);
   }
 
   .button-primary:hover{
     color: var(--color-primary);
-    background-color: var(--color-white);
+    background: var(--color-white);
   }
   
   /* Helpers
@@ -806,3 +806,50 @@ input:not(:placeholder-shown) ~ .form-field-icon::after {
   textarea:valid:not(:placeholder-shown) {
     border: 0.1rem solid var(--valid-color);
   }
+
+  /*** SEARCH FORM ***/
+.form-search{
+    display: block;
+    padding: .5rem 0;
+    position: relative;
+}
+
+.form-search .search-button{
+    display: inline-block;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.search-button .search-icon{
+    fill: var(--color-white);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.form-search input[type=search]{
+    display: inline-block;
+    color: var(--color-white);
+    padding-right: 2rem;
+    height: 3rem;
+    border: 0;
+    outline: none;
+    position: absolute;
+    width: 0;
+    right: 0;
+    background: none;
+    cursor: pointer;
+    z-index: 3;
+    transition: width .4s cubic-bezier(0, 0.795, 0, 1);
+}
+
+.form-search input[type=search]:focus{
+    position: relative;
+    width: 15rem;
+    z-index: 1;
+    border-bottom: .1rem solid var(--color-grey);
+    padding: 0;
+    cursor: text;
+    margin: 0 1rem;
+}
