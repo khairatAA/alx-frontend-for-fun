@@ -1,0 +1,22 @@
+h2 a:link {
+    color: brown;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 0.25rem;
+    text-decoration: none;
+}
+
+a:link::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: brown;
+    transition: width 0.25s ease-out;
+}
+
+a:link:hover::before{
+    width: 100%;
+}

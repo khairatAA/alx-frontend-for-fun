@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    background-image: url('./0-sprite.png');
+    background-repeat: no-repeat;
+}
+
+li {
+    list-style: none;
+    font-weight: 800;
+    font-size: 40px;
+    border: 1px solid;
+    padding-bottom: 300px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 20px;
+}
+
+li:last-child{
+    padding-left: 20px;
+}
+
