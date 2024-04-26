@@ -1,9 +1,5 @@
-$textColor: '#3D3D3D';
+$text-color: '#3D3D3D';
 
-body {
-    color: $textColor;
-}
-  
-p {
-    color: $textColor;
+body, p {
+    color: $text-color;
 }
